@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route} from 'react-router-dom';
+import React, { Component } from 'react';
+import ProductList from './components/products/ProductList';
+import ProductDetails from './components/products/ProductDetails';
+import axios from 'axios';
+import AddProduct from './components/products/AddProduct';
 
-function App() {
+class App extends Component {
+
+  state = { listOfProducts: [] }
+
+  getAllProducts = () => {
+    axios.get(`http://localhost:5005/api/products`)
+      .then(responseFromApi => {
+        this.setState({
+          listOfProducts: responseFromApi.data
+        })
+        
+      })
+  }
+  componentDidMount() {
+    this.getAllProducts();
+  }
+
+
+
+
+
+
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <Switch>
+    <Route exact path="/products" render = {props => <ProductList  allProductList={this.state.listOfProducts}  />} />
+    <Route exact path="/products/:id" component={ProductDetails} />
+    
+    {/* <Route exact path="/products/add" render={props => <AddProduct getData={()=> this.getAllProducts()} />}  /> */}
+    </Switch>
     </div>
   );
+  }
 }
 
 export default App;
