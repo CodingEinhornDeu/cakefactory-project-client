@@ -8,7 +8,7 @@ class ProductList extends Component {
       <div>
         <div style={{ width: '60%', float: "left" }}>
           <h1>Product List</h1>
-          <button><Link to={'/add'}>add product</Link></button>
+          <button><Link to={'/products/add'}>add product</Link></button>
           {this.props.allProductList.map(product => {
             return (
               <div key={product._id}>
