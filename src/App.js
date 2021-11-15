@@ -34,8 +34,7 @@ class App extends Component {
   <Switch>
     <Route exact path="/products" render = {props => <ProductList  allProductList={this.state.listOfProducts}  />} />
     <Route exact path="/products/:id" component={ProductDetails} />
-    
-    {/* <Route exact path="/products/add" render={props => <AddProduct getData={()=> this.getAllProducts()} />}  /> */}
+    <Route exact path="/add" render={props => <AddProduct getData={()=> this.getAllProducts()} />}  />
     </Switch>
     </div>
   );
