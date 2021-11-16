@@ -28,16 +28,31 @@ class App extends Component {
 
 
 
-  render(){
-  return (
-    <div className="App">
-  <Switch>
-    <Route exact path="/products" render = {props => <ProductList  allProductList={this.state.listOfProducts}  />} />
-    <Route exact path="/products/:id" component={ProductDetails} />
-    <Route exact path="/add" render={props => <AddProduct getData={()=> this.getAllProducts()} />}  />
-    </Switch>
-    </div>
-  );
+
+  render() {
+    return (
+      <div className="App">
+        <h1>homepage</h1>
+      </div>
+    );
+
+    // return (
+    //   <div className="App">
+    //     <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} />
+    //     <Switch>
+
+    //       <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
+    //       <Route exact path="/signup" render={props => <Signup {...props} getUser={this.getTheUser} />} />
+    //       {/* <Route exact path="/signup" component={Signup} /> */}
+    //       <Route exact path="/products/add" render={props => <AddProduct getData={() => this.getAllProducts()} />} />
+    //       <Route exact path="/products" render={props => <ProductList allProductList={this.state.listOfProducts} />} />
+    //       <Route exact path="/orders" render={props => <OrderList allOrderList={this.state.listOfOrders} />} />
+    //       <Route exact path="/products/:id" component={ProductDetails} />
+    //       <Route exact path="/orders/:id" component={OrderDetails} />
+
+    //     </Switch>
+    //   </div>
+    // );
   }
 }
 
