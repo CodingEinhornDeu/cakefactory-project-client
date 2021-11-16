@@ -10,7 +10,7 @@ class AddProject extends Component {
     const description = this.state.description;
     const price = this.state.price;
 
-    axios.post("http://localhost:5005/api/products", { name, description, price })
+    axios.post(`${process.env.REACT_APP_API_URL}/products`, { name, description, price },{withCredentials:true})
       .then(() => {
         this.props.getData();
         this.setState({ name: "", description: "", price: "" });
@@ -34,7 +34,6 @@ class AddProject extends Component {
           <label>Price:</label>
           <input type="text" name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
           <input type="submit" value="Submit" />
-         <button><Link to={'/products'}>Back to products</Link></button>
       </form>
       </div >
     )
