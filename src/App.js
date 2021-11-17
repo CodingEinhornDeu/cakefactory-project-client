@@ -10,7 +10,8 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Navbar from './components/navbar/Navbar';
 import OrderList from './components/orders/OrderList';
-
+// import OrderDetails from './components/orders/OrderDetails';
+import ShoppingCart from './components/orders/ShoppingCart';
 
 class App extends Component {
 
@@ -19,17 +20,29 @@ class App extends Component {
     user: null,
     listOfProducts: [],
     listOfOrders: [],
-    shoppingCart: []
+    shoppingCart: [],
   };
 
 
-  addToCart =(newProduct)=>{ 
- 
-    this.setState(prevState => ({
-      shoppingCart: [ ...prevState.shoppingCart, newProduct ]
-    }))
-  
-  
+  addToCart = (productId) => {
+
+    this.setState(prevState => {
+      const productInShoppingCart = prevState.shoppingCart.find((elm) => elm._id === productId);
+
+      if (productInShoppingCart) {
+        productInShoppingCart.quantity++;
+      } else {
+        const productDetails = this.state.listOfProducts.find(elm => elm._id === productId);
+        const productDetailsCopy = JSON.parse(JSON.stringify(productDetails)); //we create a copy to avoid mutating state
+        productDetailsCopy.quantity = 1;
+        prevState.shoppingCart.push(productDetailsCopy);
+      }
+
+      return {
+        shoppingCart: prevState.shoppingCart
+      };
+    });
+
   }
 
   getTheUser = (userObj, loggedIn) => {
@@ -110,16 +123,12 @@ console.log('cart', this.state.shoppingChart)
           <Route exact path="/products/add" render={props => <AddProduct getData={() => this.getAllProducts()}   />} />
           <Route exact path="/products" render={props => <ProductList allProductList={this.state.listOfProducts} />} />
           <Route exact path="/orders" render={props => <OrderList allOrderList={this.state.listOfOrders} />} />
-          <Route 
-           exact path="/products/:id"
-           render={props =>{
-                // console.log('props', {...props})
-                // console.log('match ',this.props.match)
-                // console.log('pID', props.match.params.id)
-             const productObj = this.state.listOfProducts.find((product)=>{
-              return product._id === props.match.params.id
-             })
-           
+          <Route
+            exact path="/products/:id"
+            render={props => {
+              return <ProductDetails  {...props} addToCart={this.addToCart} />
+            }}
+          />
              return <ProductDetails  {...props}  addToCart={this.addToChart} newProduct = {productObj} />
            }} 
            />
