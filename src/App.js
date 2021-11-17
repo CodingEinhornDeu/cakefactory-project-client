@@ -109,29 +109,39 @@ class App extends Component {
       })
   }
 
-
-
-
-
   render() {
-console.log('cart', this.state.shoppingChart)
+
     return (
       <div className="App">
+        {/* <Navbar userData={this.state.user} cartLength={this.state.shoppingCartQuantity} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} /> */}
         <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} />
-        <Switch><Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
+        <Switch>
+          <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
           <Route exact path="/signup" render={props => <Signup {...props} getUser={this.getTheUser} />} />
-          <Route exact path="/products/add" render={props => <AddProduct getData={() => this.getAllProducts()}   />} />
+          <Route exact path="/products/add" render={props => <AddProduct getData={() => this.getAllProducts()} />} />
           <Route exact path="/products" render={props => <ProductList allProductList={this.state.listOfProducts} />} />
           <Route exact path="/orders" render={props => <OrderList allOrderList={this.state.listOfOrders} />} />
+          {/* <Route exact path="/orders/:id" render={props => <OrderDetails shoppingCart = {this.state.shoppingCart} />} /> */}
           <Route
             exact path="/products/:id"
             render={props => {
               return <ProductDetails  {...props} addToCart={this.addToCart} />
             }}
           />
-             return <ProductDetails  {...props}  addToCart={this.addToChart} newProduct = {productObj} />
+          <Route
+            exact path="/orders/shoppingcart"
+            render={props => {
+
+              const orderObj = this.state.shoppingCart.map((order) => {
+
+                return order;
+              })
+
+              return <ShoppingCart  {...props} newOrder={orderObj} />
+            }}
            }} 
-           />
+            }}
+          />
         </Switch>
       </div>
     );
