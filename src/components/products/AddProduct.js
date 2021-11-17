@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-class AddProject extends Component {
+
+class AddProduct extends Component {
   state = { name: "", description: "", price: "" }
 
   handleFormSubmit = (event) => {
@@ -40,4 +40,4 @@ class AddProject extends Component {
   }
 }
 
-export default AddProject;
+export default AddProduct;
