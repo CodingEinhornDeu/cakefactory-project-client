@@ -9,6 +9,12 @@ class ProductDetails extends Component {
       this.getSingleProduct();
   }
 
+  handleAddToCart = (e) => {
+      e.preventDefault();
+      this.props.addToCart(this.props.newProduct)
+
+  }
+
   getSingleProduct = () => {
       const { params } = this.props.match;
       axios.get(`${process.env.REACT_APP_API_URL}/products/${params.id}`, { withCredentials: true })
@@ -22,6 +28,7 @@ class ProductDetails extends Component {
   }
 
   render() {
+    //console.log(this.props.match.params.id)
       return (
           <div>
               <h1>{this.state.name}</h1>
@@ -29,7 +36,7 @@ class ProductDetails extends Component {
               <p>Price: ${this.state.price}</p>
               <br />
               {/* TODO Adding to the basket functionality */}
-              <button>Add to basket</button> 
+              <button onClick={this.handleAddToCart}>Add to basket</button> 
               <br /><br />
               <Link to={'/products'}>Back to products</Link>
           </div>

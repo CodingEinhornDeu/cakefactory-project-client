@@ -18,16 +18,25 @@ class App extends Component {
     isLoggedIn: false,
     user: null,
     listOfProducts: [],
-    listOfOrders: []
+    listOfOrders: [],
+    shoppingCart: []
   };
 
+
+  addToCart =(newProduct)=>{ 
+ 
+    this.setState(prevState => ({
+      shoppingCart: [ ...prevState.shoppingCart, newProduct ]
+    }))
+  
+  
+  }
 
   getTheUser = (userObj, loggedIn) => {
     this.setState({
       isLoggedIn: loggedIn,
       user: userObj
     });
-    console.log('function is called');
   };
 
   fetchUser = () => {
@@ -35,7 +44,7 @@ class App extends Component {
       authService
         .loggedin()
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           if (data) {
             this.setState({
               user: data,
@@ -84,7 +93,6 @@ class App extends Component {
         this.setState({
           listOfOrders: apiResponse.data
         })
-
       })
   }
 
@@ -93,15 +101,28 @@ class App extends Component {
 
 
   render() {
+console.log('cart', this.state.shoppingChart)
     return (
       <div className="App">
         <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} />
         <Switch><Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
           <Route exact path="/signup" render={props => <Signup {...props} getUser={this.getTheUser} />} />
-          <Route exact path="/products/add" render={props => <AddProduct getData={() => this.getAllProducts()} />} />
+          <Route exact path="/products/add" render={props => <AddProduct getData={() => this.getAllProducts()}   />} />
           <Route exact path="/products" render={props => <ProductList allProductList={this.state.listOfProducts} />} />
           <Route exact path="/orders" render={props => <OrderList allOrderList={this.state.listOfOrders} />} />
-          <Route exact path="/products/:id" component={ProductDetails} />
+          <Route 
+           exact path="/products/:id"
+           render={props =>{
+                // console.log('props', {...props})
+                // console.log('match ',this.props.match)
+                // console.log('pID', props.match.params.id)
+             const productObj = this.state.listOfProducts.find((product)=>{
+              return product._id === props.match.params.id
+             })
+           
+             return <ProductDetails  {...props}  addToCart={this.addToChart} newProduct = {productObj} />
+           }} 
+           />
         </Switch>
       </div>
     );
