@@ -9,17 +9,29 @@ class ShoppingCart extends Component {
   handleSendOrderDB = (e) => {
     e.preventDefault();
 
-    axios.post(`${process.env.REACT_APP_API_URL}/orders`, { withCredentials: true })
+    const { newOrder } = this.props;
+    // extracting from this.props only the id and quantity
+    const itemsOrdered = newOrder.map((elm) => {
+      return { productId: elm["_id"], quantity: elm['quantity'] };
+    })
+    axios.post(`${process.env.REACT_APP_API_URL}/orders`, { itemsOrdered }, { withCredentials: true })
+      .then((response) => {
+        this.props.getAllOrders();
+      })
+      .catch(error => console.log(error))
+
+
+
 
   }
 
 
   render() {
     const { newOrder } = this.props;
-    
+
     return (
       <div>
-        <h1> Your Order Details</h1>
+        <h1> Your shopping details</h1>
         {newOrder.map((item) => {
           return (
             <div key={item._id}>
@@ -30,7 +42,7 @@ class ShoppingCart extends Component {
             </div>
           )
         })}
-        <button><Link to={'/orders'}>Checkout</Link></button>
+        <button onClick={this.handleSendOrderDB}><Link to={'/orders'}>Checkout</Link></button>
       </div>
     )
   }
