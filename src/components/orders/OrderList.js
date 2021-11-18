@@ -12,7 +12,7 @@ class OrderList extends Component {
             return (
               <div key={order._id}>
                 <Link to={`/orders/${order._id}`}>
-                  <h3>{order._id}</h3>
+                  <h3>{order.owner.username}</h3>
                 </Link>
                 
               </div>

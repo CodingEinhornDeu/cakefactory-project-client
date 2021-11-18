@@ -10,8 +10,8 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Navbar from './components/navbar/Navbar';
 import OrderList from './components/orders/OrderList';
-// import OrderDetails from './components/orders/OrderDetails';
 import ShoppingCart from './components/orders/ShoppingCart';
+import OrderDetails from './components/orders/OrderDetails';
 
 class App extends Component {
 
@@ -113,7 +113,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <Navbar userData={this.state.user} cartLength={this.state.shoppingCartQuantity} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} /> */}
+       
         <Navbar userData={this.state.user} userIsLoggedIn={this.state.isLoggedIn} getUser={this.getTheUser} />
         <Switch>
           <Route exact path="/" render={props => <Login {...props} getUser={this.getTheUser} />} />
@@ -121,23 +121,27 @@ class App extends Component {
           <Route exact path="/products/add" render={props => <AddProduct {...props} getData={() => this.getAllProducts()} />} />
           <Route exact path="/products" render={props => <ProductList {...props} allProductList={this.state.listOfProducts} />} />
           <Route exact path="/orders" render={props => <OrderList {...props} allOrderList={this.state.listOfOrders} />} />
-          {/* <Route exact path="/orders/:id" render={props => <OrderDetails shoppingCart = {this.state.shoppingCart} />} /> */}
+
           <Route
             exact path="/products/:id"
             render={props => {
               return <ProductDetails  {...props} addToCart={this.addToCart} />
             }}
           />
+        
           <Route
             exact path="/orders/shoppingcart"
             render={props => {
               const orderObj = this.state.shoppingCart.map((order) => {
                 return order;
               })
-
-              return <ShoppingCart  {...props} newOrder={orderObj} getAllOrders = {this.getAllOrders} />
+              return <ShoppingCart  {...props} newOrder={orderObj} getAllOrders={this.getAllOrders} />
             }}
-            
+          />
+
+          <Route 
+          exact path="/orders/:id"
+          render={props =><OrderDetails  {...props} />}
           />
         </Switch>
       </div>

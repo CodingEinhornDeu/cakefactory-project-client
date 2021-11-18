@@ -10,14 +10,14 @@ class Navbar extends Component {
   };
 
   render() {
-    const { userIsLoggedIn, userData,cartLength } = this.props;
+    const { userIsLoggedIn, userData } = this.props;
 
     if (userIsLoggedIn) {
       return (
         <nav className="nav-style">
-          <h4 className="cart">You have {cartLength} items in your 
+          <h4 className="cart">
             <Link to="/orders/shoppingcart" style={{ textDecoration: 'none' }}>
-            🛒
+            Shopping Cart!🛒
               </Link>
             </h4>
           <ul>

@@ -1,0 +1,52 @@
+
+
+- if user click checkout -> order will be created
+  - store the quantities in shoppingCart (state in App)
+
+
+    shoppingCart = [
+      { name: xxx, description: xxx}
+      { name: xxx, description: xxx}
+      { name: brownie, description: xxx}
+      { name: brownie, description: xxx}
+    ]
+
+
+    shoppingCart = [
+      {
+        id: xxx,
+        name: xxx,
+        description: xxx,
+        quantity: 1
+      },
+      {
+        id: xxx,
+        quantity: 3
+      }
+    ]
+
+
+  - optional: modify the page with the shopping cart to display the quantities
+  - step 2: 
+    - send the information to the backend
+    - Order.create
+
+
+
+
+
+-OR user can delete update and edit the product? it is easy
+
+____________________
+
+
+- Models:
+  - User (CR) --> READY
+  - Product (CR) --> READY
+  - Order (CRUD) [MVP users can CRUD orders from other users]
+
+- Things outside of MVP
+  - Images
+  - Only admin can Create products
+    - role: Sting  ("admin"/"regular")
+  - Restricted things (users should not be allowed to modify orders from other users)
