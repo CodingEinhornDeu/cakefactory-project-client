@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 class OrderDetails extends Component {
 
-
-
-
-  componentDidMount() {
-    this.getSingleOrder();
+  state = {
+    itemsOrdered: []
   }
 
   getSingleOrder = () => {
@@ -17,22 +14,36 @@ class OrderDetails extends Component {
       .then(responseFromApi => {
         const theOrder = responseFromApi.data;
         this.setState(theOrder);
-        console.log("THE", theOrder)
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
+  componentDidMount() {
+    this.getSingleOrder();
+  }
+
   render() {
+    console.log("that", this.state.itemsOrdered)
     return (
       <div className="container2">
-        <h1 className="label-blacky">Your Order Details</h1>
-        <h3 className="label-blacky">productID:</h3>
-        <h3 className="label-blacky">Quantity:</h3>
+        <h1 className="label-black">Your Order Details</h1>
+        <div className="items-list">
+          {this.state.itemsOrdered.map((element) => {
+            return (
+              <div className="item">
+                <h3 className="label-grey">Name: {element.productId.name}</h3>
+                <h3 className="label-grey">Quantity: {element.quantity}</h3>
+              </div>
+            )
+          })}
+        </div>
+
+
         <div className="button">
           <div className="inner"></div>
-          <button><Link to={'/orders'} style={{textDecoration:'none',color:'white', fontWeight:'bolder'}}>See all Orders</Link></button>
+          <button><Link to={'/orders'} style={{ textDecoration: 'none', color: 'white', fontWeight: 'bolder' }}>See all Orders</Link></button>
         </div>
 
       </div>

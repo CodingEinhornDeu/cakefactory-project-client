@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 class ShoppingCart extends Component {
 
-
-
   handleSendOrderDB = (e) => {
     e.preventDefault();
 
@@ -19,12 +17,7 @@ class ShoppingCart extends Component {
         this.props.getAllOrders();
       })
       .catch(error => console.log(error))
-
-
-
-
   }
-
 
   render() {
     const { newOrder } = this.props;
@@ -32,21 +25,21 @@ class ShoppingCart extends Component {
     return (
       <div className="container2">
         <h1 className="label-black"> Your Shopping Details</h1>
-        <hr/>
-        {newOrder.map((item) => {
-          return (
-            <div key={item._id}>
-              <p className="label-grey">Product: {item.name}</p>
-              <p className="label-grey">Price: ${item.price}</p>
-              <p className="label-grey">Quantity:{item.quantity}</p>
-              <hr></hr>
-            </div>
-          )
-        })}
+        <div className="items-list">
+          {newOrder.map((item) => {
+            return (
+              <div className="item" key={item._id}>
+                <p className="label-grey">Product: {item.name}</p>
+                <p className="label-grey">Price: ${item.price}</p>
+                <p className="label-grey">Quantity:{item.quantity}</p>
+              </div>
+            )
+          })}
+        </div>
         <div className="button">
-            <div className="inner"></div>
-            <button onClick={this.handleSendOrderDB}><Link to={'/orders'} style={{textDecoration:'none', color:'white',fontWeight:'bolder'}}>Checkout</Link></button>
-          </div>
+          <div className="inner"></div>
+          <button onClick={this.handleSendOrderDB}><Link to={'/orders'} style={{ textDecoration: 'none', color: 'white', fontWeight: 'bolder' }}>Checkout</Link></button>
+        </div>
       </div>
     )
   }

@@ -121,14 +121,12 @@ class App extends Component {
           <Route exact path="/products/add" render={props => <AddProduct {...props} getData={() => this.getAllProducts()} />} />
           <Route exact path="/products" render={props => <ProductList {...props} allProductList={this.state.listOfProducts} />} />
           <Route exact path="/orders" render={props => <OrderList {...props} allOrderList={this.state.listOfOrders} />} />
-
           <Route
             exact path="/products/:id"
             render={props => {
               return <ProductDetails  {...props} addToCart={this.addToCart} />
             }}
           />
-        
           <Route
             exact path="/orders/shoppingcart"
             render={props => {
@@ -141,7 +139,9 @@ class App extends Component {
 
           <Route 
           exact path="/orders/:id"
-          render={props =><OrderDetails  {...props} />}
+          render={props =>{
+           return  <OrderDetails  {...props} />
+          }}
           />
         </Switch>
       </div>

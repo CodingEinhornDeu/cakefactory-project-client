@@ -222,3 +222,7 @@ input:focus{
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
 }
+
+.items-list .item {
+  border-bottom: 1px solid silver;
+}
