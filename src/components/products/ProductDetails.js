@@ -28,13 +28,16 @@ class ProductDetails extends Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.name}</h1>
-                <p>Description: {this.state.description}</p>
-                <p>Price: ${this.state.price}</p>
+            <div className="container">
+                <h1 className="label-blacky">{this.state.name}</h1>
+                <p className="labelDetail"><b>Description: </b><br/>{this.state.description}</p>
+                <p className="labelDetail"><b>Price: </b> ${this.state.price}</p>
                 <br />
-                {/* TODO Adding to the basket functionality */}
-                <button onClick={this.handleAddToCart}>Add to basket</button>
+                <div className="button">
+            <div className="inner"></div>
+            <button onClick={this.handleAddToCart}>Add to basket</button>
+          </div>
+               
             </div>
         )
     }

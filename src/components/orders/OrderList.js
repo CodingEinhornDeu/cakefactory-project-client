@@ -6,13 +6,13 @@ class OrderList extends Component {
   render() {
     return (
       <div>
-        <div style={{ width: '60%', float: "right" }}>
-          <h1>Order List</h1>
+         <div className="container">
+         <h1 className="label-black">🧾Order List🧾</h1>
           {this.props.allOrderList.map(order => {
             return (
               <div key={order._id}>
-                <Link to={`/orders/${order._id}`}>
-                  <h3>{order.owner.username}</h3>
+                <Link to={`/orders/${order._id}`} style={{textDecoration:'none',color:'white'}}>
+                  <h3 className="label">{order.owner.username}</h3>
                 </Link>
                 
               </div>

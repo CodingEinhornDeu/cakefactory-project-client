@@ -30,19 +30,23 @@ class ShoppingCart extends Component {
     const { newOrder } = this.props;
 
     return (
-      <div>
-        <h1> Your shopping details</h1>
+      <div className="container2">
+        <h1 className="label-black"> Your Shopping Details</h1>
+        <hr/>
         {newOrder.map((item) => {
           return (
             <div key={item._id}>
-              <p>Name: {item.name}</p>
-              <p>Price: ${item.price}</p>
-              <p>Quantity:{item.quantity}</p>
+              <p className="label-grey">Product: {item.name}</p>
+              <p className="label-grey">Price: ${item.price}</p>
+              <p className="label-grey">Quantity:{item.quantity}</p>
               <hr></hr>
             </div>
           )
         })}
-        <button onClick={this.handleSendOrderDB}><Link to={'/orders'}>Checkout</Link></button>
+        <div className="button">
+            <div className="inner"></div>
+            <button onClick={this.handleSendOrderDB}><Link to={'/orders'} style={{textDecoration:'none', color:'white',fontWeight:'bolder'}}>Checkout</Link></button>
+          </div>
       </div>
     )
   }

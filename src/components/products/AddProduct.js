@@ -25,15 +25,23 @@ class AddProduct extends Component {
 
   render() {
     return (
-      <div>
+     
+      <div className="container">
+          <label className="labelo">🧁 Create a new 🧁</label>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
-          <label>Description:</label>
-          <textarea name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
-          <label>Price:</label>
-          <input type="text" name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
-          <input type="submit" value="Submit" />
+      
+          <label className="label">Name</label>
+         
+          <input className="input-field" type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
+          <label className="label">Description</label>
+          <textarea className="input-field" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
+          <label className="label">Price</label>
+          <input className="input-field" type="text" name="price" value={this.state.price} onChange={e => this.handleChange(e)} />
+          <div className="button">
+            <div className="inner"></div>
+            <button type="submit">Submit</button>
+          </div>
+          
       </form>
       </div >
     )

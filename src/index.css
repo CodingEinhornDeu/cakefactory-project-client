@@ -5,9 +5,220 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #cbeff1;
+  justify-content: center;
+ 
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.right-nav{
+  position:absolute;
+  right:100px;
+  top:30px;
+}
+.right-nav li{
+  display: inline;
+  margin:20px;
+  font-size: 25px;
+  font-weight: bolder;
+  color:deeppink
+}
+.logout{
+  color:deeppink;
+  font-size: 18px;
+  font-weight: bolder; 
+  background: none;
+  border:none;
+}
+.welcome {
+  position: absolute;
+  top:37px;
+  font-size: 20px;
+  font-weight: bolder;
+  color:deeppink;
+  left:45%;
+}
+.logo{
+  font-size: 30px;
+  color:rgb(238, 225, 225);
+  padding: 10px 15px;
+  border-radius: 30px;
+  background: -webkit-linear-gradient(right,#00dbde,#fc00ff,#00dbde,#fc00ff);
+  position: absolute;
+  left:20px;
+  top:8px;
+}
+.cart{
+  position: absolute;
+  top: 0;
+  right: 80px;
+}
+li{
+  list-style: none;
+}
+.container{
+  position: relative;
+  width: 400px;
+  background:#e3f6f6;
+  padding: 60px 40px;
+  border-radius: 20px;
+  margin-top: -150px;
+}
+.container2{
+  position: relative;
+  width: 650px;
+  background:#e3f6f6;
+  padding: 40px;
+  border-radius: 20px;
+  top:20px;
+}
+input[type="text"] {
+  font-size:20px;
+  background-color: white;
+  color:grey;
+
+}
+.h3-title{
+  font-size: 19px;
+  font-weight: bold;
+  color:deeppink;
+  position: absolute;
+  left: 45%;
+  top:150px;
+}
+.product-list {
+  position: absolute;
+  left:40%;
+  top:100px;
+}
+.input-field, form .button{
+  margin: 20px 0;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+}
+.input-field input, textarea{
+  height: 100%;
+  width: 100%;
+  border: 1px solid silver;
+  padding-left: 15px;
+  outline: none;
+  font-size: 19px;
+  transition: .4s; 
+  border-radius: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 20px;
+    background-color: white;
+    color: grey;
+}
+
+.label{
+  font-size: 19px;
+  font-weight: bold;
+  color:deeppink;
+}
+.label-black{
+  font-size: 30px;
+  font-weight: bold;
+  color:#796c6c;
+  text-align:center;
+}
+.label-blacky{
+  font-size: 30px;
+  font-weight: bold;
+  color:#796c6c;
+  text-align:start;
+}
+.labelDetail{
+  font-size: 18px;
+ font-weight: bold;
+  color:#796c6c;
+  text-align:start;
+}
+.label-grey{
+    font-size: 18px;
+    font-weight: bold;
+    color:#796c6c;
+    text-align:center;
+}
+.gryBtn{
+  font-size: 16px;
+  font-weight: bold;
+  color: gray;
+  padding: 10px;
+}
+.labelo{
+  position: absolute;
+  top:20px;
+  right:150px;
+  font-size: 19px;
+  font-weight: bold;
+  color:deeppink
+}
+input:focus{
+  border: 1px solid #70b7e4;
+}
+.input-field label, span.show{
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+.input-field label{
+  left: 15px;
+  pointer-events: none;
+  color: grey;
+  font-size: 18px;
+  transition: .4s;
+}
+.signup{
+  margin-top: 50px;
+  font-family: 'Noto Sans', sans-serif;
+}
+.signup a{
+  color: #3498db;
+  text-decoration: none;
+}
+.button{
+  margin: 25px 0;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+  overflow: hidden;
+  z-index: 111;
+  border-radius: 20px;
+}
+
+.button .inner{
+  position: absolute;
+  height: 100%;
+  width: 300%;
+  left: -100%;
+  z-index: -1;
+  transition: all .4s;
+  background: -webkit-linear-gradient(right,#00dbde,#fc00ff,#00dbde,#fc00ff);
+}
+.button:hover .inner{
+  left: 0;
+}
+.button button{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
 }
